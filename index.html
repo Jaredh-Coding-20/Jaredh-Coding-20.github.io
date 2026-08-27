@@ -3,32 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Jaredh Dagdag | AI & Web Developer</title>
     <style>
-        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; background-color: #f4f4f9; }
-        header { text-align: center; padding: 20px; background: #333; color: #fff; border-radius: 8px; }
-        section { background: #fff; padding: 20px; margin-top: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
-        h1, h2 { color: #333; }
-        header h1 { color: #fff; }
+        :root {
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #38bdf8;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            background-color: var(--bg-color); 
+            color: var(--text-main); 
+            line-height: 1.6; 
+        }
+
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        
+        header { text-align: center; margin-bottom: 50px; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--accent); }
+        header p { color: var(--text-muted); font-size: 1.2rem; }
+
+        .section-title { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--card-bg); padding-bottom: 10px; }
+
+        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
+        .skill-tag { 
+            background: var(--card-bg); 
+            padding: 8px 16px; 
+            border-radius: 20px; 
+            font-size: 0.9rem;
+            color: var(--accent);
+            border: 1px solid #334155;
+        }
+
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .project-card { 
+            background: var(--card-bg); 
+            padding: 20px; 
+            border-radius: 12px; 
+            border: 1px solid #334155;
+            transition: transform 0.2s;
+        }
+        .project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
+        .project-card h3 { color: var(--text-main); margin-bottom: 10px; }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+
+        footer { text-align: center; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem; }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Developer & Creator Portfolio</h1>
-        <p>AI Automation | Software Development | Web Design</p>
-    </header>
+    <div class="container">
+        <header>
+            <h1>Jaredh Dagdag</h1>
+            <p>AI Automation | Software Development | Multimedia Creator</p>
+        </header>
 
-    <section>
-        <h2>About Me</h2>
-        <p>Welcome to my portfolio! I build automated workflows, web applications, and digital experiences.</p>
-    </section>
+        <section>
+            <h2 class="section-title">Technical Stack</h2>
+            <div class="skills-container">
+                <span class="skill-tag">Prompt Engineering</span>
+                <span class="skill-tag">Google Gemini / AI Pro</span>
+                <span class="skill-tag">Laravel</span>
+                <span class="skill-tag">Trae</span>
+                <span class="skill-tag">System Integration</span>
+                <span class="skill-tag">CapCut & Video Editing</span>
+                <span class="skill-tag">InfinityFree Hosting</span>
+            </div>
+        </section>
 
-    <section>
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>AI Content Automation:</strong> Custom scripts for video asset generation.</li>
-            <li><strong>Web Development:</strong> Full-stack applications and responsive design.</li>
-        </ul>
-    </section>
+        <section>
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>AI Multimedia Automation</h3>
+                    <p>Engineered advanced prompts to generate customized scripts, visual assets, and perfectly timed short-form reels. Streamlined the production pipeline using AI-driven creation tools.</p>
+                </div>
+                <div class="project-card">
+                    <h3>Local Business Integrations</h3>
+                    <p>Configured, designed, and deployed web hosting environments on InfinityFree. Built functional digital storefronts to bring local enterprises online.</p>
+                </div>
+                <div class="project-card">
+                    <h3>System Architecture</h3>
+                    <p>Applied backend frameworks and integration principles to bridge distinct software environments, ensuring smooth data flow and responsive web design.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Let's build something. Connect with me on <a href="https://github.com/Jaredh-Coding-20" target="_blank">GitHub</a>.</p>
+        </footer>
+    </div>
 </body>
 </html>
