@@ -6,74 +6,292 @@
     <title>Jaredh Dagdag | AI & Web Developer</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
+            --bg-color: #050507; 
+            --card-bg: #121216;
+            --card-border: #23232c;
+            --text-main: #f4f4f5;
             --text-muted: #94a3b8;
             --accent: #38bdf8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-hover: #0ea5e9;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body { 
-            font-family: 'Segoe UI', system-ui, sans-serif; 
+            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
             background-color: var(--bg-color); 
             color: var(--text-main); 
-            line-height: 1.6; 
+            line-height: 1.7; 
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(129, 140, 248, 0.04) 0%, transparent 40%);
         }
 
-        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        .container { max-width: 1050px; margin: 0 auto; padding: 80px 24px; }
         
-        header { text-align: center; margin-bottom: 50px; }
-        header h1 { font-size: 2.5rem; margin-bottom: 10px; color: var(--accent); }
-        header p { color: var(--text-muted); font-size: 1.2rem; }
+        /* --- HEADER --- */
+        header { text-align: center; margin-bottom: 80px; animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+        header h1 { 
+            font-size: 3.5rem; margin-bottom: 12px; 
+            background: linear-gradient(135deg, #f8fafc 30%, var(--accent) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+        header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 400; letter-spacing: 0.01em; }
 
-        .section-title { font-size: 1.5rem; margin-bottom: 20px; border-bottom: 2px solid var(--card-bg); padding-bottom: 10px; }
-
-        .skills-container { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 40px; }
-        .skill-tag { 
-            background: var(--card-bg); 
-            padding: 8px 16px; 
-            border-radius: 20px; 
-            font-size: 0.9rem;
-            color: var(--accent);
-            border: 1px solid #334155;
+        .section-title { 
+            font-size: 1.5rem; margin-bottom: 35px; color: #f8fafc;
+            font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 12px;
+        }
+        .section-title::after {
+            content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--card-border), transparent);
         }
 
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        /* --- CAROUSEL STYLES --- */
+        .carousel-container { width: 100%; overflow: hidden; padding: 20px 0 40px 0; position: relative; }
+
+        .carousel-container::before, .carousel-container::after {
+            content: ""; position: absolute; top: 0; width: 120px; height: 100%; z-index: 2; pointer-events: none;
+        }
+        .carousel-container::before { left: 0; background: linear-gradient(to right, var(--bg-color), transparent); }
+        .carousel-container::after { right: 0; background: linear-gradient(to left, var(--bg-color), transparent); }
+
+        .carousel-track {
+            display: flex; gap: 24px; width: max-content; animation: scroll 35s linear infinite;
+        }
+        .carousel-track:hover { animation-play-state: paused; }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-50% - 12px)); } 
+        }
+
+        /* --- IMAGE CARD STYLES --- */
+        .tech-card {
+            width: 180px;         
+            height: 260px;        
+            border-radius: 20px;  
+            overflow: hidden;     
+            flex-shrink: 0; 
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
+        }
+
+        .tech-card img {
+            height: 105%;         
+            width: auto;          
+            max-width: none;      
+            object-fit: cover; 
+            object-position: center; 
+            transition: transform 0.5s ease;
+        }
+
+        .tech-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 20px 40px var(--accent-glow);
+        }
+        .tech-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* --- PROJECT GRID --- */
+        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px; }
         .project-card { 
-            background: var(--card-bg); 
-            padding: 20px; 
-            border-radius: 12px; 
-            border: 1px solid #334155;
-            transition: transform 0.2s;
+            background: var(--card-bg); padding: 32px; border-radius: 20px; border: 1px solid var(--card-border);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
         }
-        .project-card:hover { transform: translateY(-5px); border-color: var(--accent); }
-        .project-card h3 { color: var(--text-main); margin-bottom: 10px; }
-        .project-card p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+        .project-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent), transparent);
+            opacity: 0; transition: opacity 0.4s ease;
+        }
+        .project-card:hover { 
+            transform: translateY(-6px); 
+            border-color: rgba(56, 189, 248, 0.3); 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px var(--accent-glow); 
+        }
+        .project-card:hover::before { opacity: 1; }
+        .project-card h3 { color: var(--text-main); margin-bottom: 12px; font-size: 1.25rem; font-weight: 600; }
+        .project-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
 
-        footer { text-align: center; margin-top: 60px; color: var(--text-muted); font-size: 0.9rem; }
-        a { color: var(--accent); text-decoration: none; }
-        a:hover { text-decoration: underline; }
+        /* --- AI CHAT DEMO STYLES --- */
+        .demo-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .chat-container {
+            width: 100%;
+            max-width: 650px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            height: 500px;
+            overflow: hidden;
+        }
+
+        .chat-header {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(18, 18, 22, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-header-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--text-main);
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        .chat-box {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            scroll-behavior: smooth;
+        }
+
+        .message {
+            max-width: 80%;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            animation: messageFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes messageFade {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot-msg {
+            background: #1a1a22;
+            color: var(--text-main);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+            border: 1px solid var(--card-border);
+        }
+
+        .user-msg {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
+            color: #050507;
+            font-weight: 500;
+            align-self: flex-end;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 15px var(--accent-glow);
+        }
+
+        .chat-input-area {
+            padding: 20px 24px;
+            border-top: 1px solid var(--card-border);
+            display: flex;
+            gap: 12px;
+            background: rgba(18, 18, 22, 0.8);
+            backdrop-filter: blur(10px);
+        }
+
+        .chat-input-area input {
+            flex: 1;
+            padding: 14px 18px;
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
+            background: #09090b;
+            color: var(--text-main);
+            outline: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input-area input:focus { 
+            border-color: var(--accent); 
+            box-shadow: 0 0 0 3px var(--accent-glow);
+        }
+
+        .chat-input-area button {
+            padding: 0 24px;
+            background: var(--text-main);
+            color: #050507;
+            border: none;
+            border-radius: 14px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .chat-input-area button:hover {
+            background: var(--accent);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        /* --- FOOTER --- */
+        footer { text-align: center; margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.95rem; }
+        a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+        a:hover { color: var(--text-main); text-decoration: underline; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Jaredh Dagdag</h1>
-            <p>AI Automation | Software Development | Multimedia Creator</p>
+            <p>AI Automation &middot; Software Development &middot; Multimedia Creator</p>
         </header>
 
         <section>
-            <h2 class="section-title">Technical Stack</h2>
-            <div class="skills-container">
-                <span class="skill-tag">Prompt Engineering</span>
-                <span class="skill-tag">Google Gemini / AI Pro</span>
-                <span class="skill-tag">Laravel</span>
-                <span class="skill-tag">Trae</span>
-                <span class="skill-tag">System Integration</span>
-                <span class="skill-tag">CapCut & Video Editing</span>
-                <span class="skill-tag">InfinityFree Hosting</span>
+            <h2 class="section-title">Core Tech Stack</h2>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <div class="tech-card"><img src="html.jpg" alt="HTML5"></div>
+                    <div class="tech-card"><img src="css.jpg" alt="CSS3"></div>
+                    <div class="tech-card"><img src="javascript.jpg" alt="JavaScript"></div>
+                    <div class="tech-card"><img src="bootstrap.jpg" alt="Bootstrap"></div>
+                    <div class="tech-card"><img src="php.jpg" alt="PHP"></div>
+                    <div class="tech-card"><img src="python.jpg" alt="Python"></div>
+                    
+                    <div class="tech-card"><img src="html.jpg" alt="HTML5"></div>
+                    <div class="tech-card"><img src="css.jpg" alt="CSS3"></div>
+                    <div class="tech-card"><img src="javascript.jpg" alt="JavaScript"></div>
+                    <div class="tech-card"><img src="bootstrap.jpg" alt="Bootstrap"></div>
+                    <div class="tech-card"><img src="php.jpg" alt="PHP"></div>
+                    <div class="tech-card"><img src="python.jpg" alt="Python"></div>
+                </div>
             </div>
         </section>
 
@@ -81,8 +299,8 @@
             <h2 class="section-title">Selected Projects</h2>
             <div class="projects-grid">
                 <div class="project-card">
-                    <h3>AI Multimedia Automation</h3>
-                    <p>Engineered advanced prompts to generate customized scripts, visual assets, and perfectly timed short-form reels. Streamlined the production pipeline using AI-driven creation tools.</p>
+                    <h3>Google Flow AI Automation</h3>
+                    <p>Leveraged Google Flow's AI-assisted storyboarding and Veo 3.1 to generate customized scripts, visual assets, and precisely timed 8-second short reels without over-dramatizing the content. Maintained absolute character consistency across scenes using pre-built automated workflows.</p>
                 </div>
                 <div class="project-card">
                     <h3>Local Business Integrations</h3>
@@ -95,9 +313,98 @@
             </div>
         </section>
 
+        <section>
+            <h2 class="section-title">Interactive Portfolio Assistant</h2>
+            <p style="color: var(--text-muted); text-align: center; margin-bottom: 25px; font-weight: 300;">Ask me anything about my background, education, tech stack, or projects!</p>
+            
+            <div class="demo-wrapper">
+                <div class="chat-container">
+                    <div class="chat-header">
+                        <div class="chat-header-info">
+                            <span class="status-dot"></span>
+                            Jaredh's Virtual Assistant
+                        </div>
+                    </div>
+                    <div class="chat-box" id="chat-box">
+                        <div class="message bot-msg">
+                            Hey there! Feel free to drop a question about my projects, coding experience, or what I like to do for fun.
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="user-input" placeholder="Ask a question..." onkeypress="handleKeyPress(event)">
+                        <button onclick="sendMessage()">Send</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer>
-            <p>Let's build something. Connect with me on <a href="https://github.com/Jaredh-Coding-20" target="_blank">GitHub</a>.</p>
+            <p>Let's build something extraordinary. Connect with me on <a href="https://github.com/Jaredh-Coding-20" target="_blank">GitHub</a>.</p>
         </footer>
     </div>
+
+    <script>
+        function generateResponse(input) {
+            const text = input.toLowerCase();
+            const matchesAny = (words) => words.some(word => text.includes(word));
+
+            if (matchesAny(["who", "name", "jaredh", "dagdag", "person", "creator", "author", "owner", "yourself", "background", "profile", "bio"])) {
+                return "I am Jaredh Carlito Egmalis Dagdag, a 22-year-old developer, multimedia creator, and IT student based in the Philippines.";
+            }
+            if (matchesAny(["school", "university", "study", "degree", "college", "education", "course", "uep", "pangasinan", "orangeapps", "lms", "student", "class", "academic"])) {
+                return "I study Information Technology at the University of Eastern Pangasinan (UEP), building systems using frameworks like Laravel and managing platforms like OrangeApps LMS.";
+            }
+            if (matchesAny(["skill", "tech", "stack", "language", "programming", "code", "coding", "development", "developer", "html", "css", "javascript", "bootstrap", "php", "python", "laravel", "tools", "hugging", "face", "google", "flow", "veo"])) {
+                return "My stack includes HTML, CSS, JavaScript, Bootstrap, PHP, Python, and Laravel, alongside AI tools like Hugging Face, Google Flow, and Veo 3.1.";
+            }
+            if (matchesAny(["work", "job", "bpo", "career", "customer", "service", "hiring", "hire", "employ", "concentrix", "vxi", "sutherland", "resume", "cv", "interview", "application"])) {
+                return "I deploy web environments on InfinityFree and actively target Customer Service roles in the BPO sector, engaging with companies like Concentrix, VXI, and Sutherland.";
+            }
+            if (matchesAny(["game", "gaming", "hobby", "hobbies", "play", "toram", "codm", "mobile", "legends", "meme", "culture", "fun", "crystal", "crysta", "demonic", "quasar", "gryps"])) {
+                return "I enjoy mobile gaming (Call of Duty: Mobile, Mobile Legends, Toram Online) and Filipino meme culture. Fun fact: demonic quasar is not a weapon crystal, and gryps crysta doesn't exist!";
+            }
+            if (matchesAny(["project", "video", "reel", "short", "script", "animation", "vlog", "edit", "multimedia", "infinityfree", "hosting", "website", "shop"])) {
+                return "I built an exactly 8-second non-dramatic video short using Google Flow and Veo 3.1, maintaining scene consistency and precise timing, alongside local business sites deployed on InfinityFree.";
+            }
+            if (matchesAny(["hello", "hi", "hey", "greetings", "sup", "morning", "afternoon", "evening", "start", "begin"])) {
+                return "Hello! Feel free to ask me about my background, tech stack, education, or projects.";
+            }
+            if (matchesAny(["how are you", "doing", "status", "system", "operational"])) {
+                return "All systems optimal! Ready to answer any questions about my portfolio.";
+            }
+
+            return "That's an interesting question! Try asking about my university studies, my programming stack, my BPO job search, or my mobile gaming hobbies.";
+        }
+
+        function sendMessage() {
+            const inputField = document.getElementById("user-input");
+            const chatBox = document.getElementById("chat-box");
+            const messageText = inputField.value.trim();
+
+            if (messageText === "") return;
+
+            const userDiv = document.createElement("div");
+            userDiv.className = "message user-msg";
+            userDiv.textContent = messageText;
+            chatBox.appendChild(userDiv);
+
+            inputField.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            setTimeout(() => {
+                const botDiv = document.createElement("div");
+                botDiv.className = "message bot-msg";
+                botDiv.textContent = generateResponse(messageText);
+                chatBox.appendChild(botDiv);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }, 400);
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        }
+    </script>
 </body>
 </html>
