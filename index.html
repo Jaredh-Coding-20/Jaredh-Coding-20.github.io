@@ -1,410 +1,1863 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaredh Dagdag | AI & Web Developer</title>
-    <style>
-        :root {
-            --bg-color: #050507; 
-            --card-bg: #121216;
-            --card-border: #23232c;
-            --text-main: #f4f4f5;
-            --text-muted: #94a3b8;
-            --accent: #38bdf8;
-            --accent-glow: rgba(56, 189, 248, 0.15);
-            --accent-hover: #0ea5e9;
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body { 
-            font-family: 'Inter', system-ui, -apple-system, sans-serif; 
-            background-color: var(--bg-color); 
-            color: var(--text-main); 
-            line-height: 1.7; 
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(129, 140, 248, 0.04) 0%, transparent 40%);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        .container { max-width: 1050px; margin: 0 auto; padding: 80px 24px; }
-        
-        /* --- HEADER --- */
-        header { text-align: center; margin-bottom: 80px; animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-        header h1 { 
-            font-size: 3.5rem; margin-bottom: 12px; 
-            background: linear-gradient(135deg, #f8fafc 30%, var(--accent) 100%);
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            font-weight: 800;
-            letter-spacing: -0.025em;
-        }
-        header p { color: var(--text-muted); font-size: 1.2rem; font-weight: 400; letter-spacing: 0.01em; }
+<meta name="description" content="Jaredh Dagdag - Custom Software Developer building small-business websites, ordering systems, web applications, Laravel systems, Python and JavaScript projects, web games, and AI automation.">
 
-        .section-title { 
-            font-size: 1.5rem; margin-bottom: 35px; color: #f8fafc;
-            font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 12px;
-        }
-        .section-title::after {
-            content: ""; flex: 1; height: 1px; background: linear-gradient(to right, var(--card-border), transparent);
-        }
+<title>Jaredh Dagdag | Custom Software Developer</title>
 
-        /* --- CAROUSEL STYLES --- */
-        .carousel-container { width: 100%; overflow: hidden; padding: 20px 0 40px 0; position: relative; }
+<style>
+:root{
+    --bg:#07130d;
+    --bg2:#0b1c13;
+    --card:#0f2418;
+    --card2:#122b1d;
+    --text:#ecfff2;
+    --muted:#a9c5b2;
+    --green:#4ade80;
+    --green2:#22c55e;
+    --border:rgba(74,222,128,.18);
+    --shadow:0 18px 50px rgba(0,0,0,.28);
+}
 
-        .carousel-container::before, .carousel-container::after {
-            content: ""; position: absolute; top: 0; width: 120px; height: 100%; z-index: 2; pointer-events: none;
-        }
-        .carousel-container::before { left: 0; background: linear-gradient(to right, var(--bg-color), transparent); }
-        .carousel-container::after { right: 0; background: linear-gradient(to left, var(--bg-color), transparent); }
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
-        .carousel-track {
-            display: flex; gap: 24px; width: max-content; animation: scroll 35s linear infinite;
-        }
-        .carousel-track:hover { animation-play-state: paused; }
+html{
+    scroll-behavior:smooth;
+}
 
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-50% - 12px)); } 
-        }
+body{
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:
+        radial-gradient(circle at 10% 10%,rgba(74,222,128,.06),transparent 35%),
+        radial-gradient(circle at 90% 80%,rgba(34,197,94,.05),transparent 35%),
+        linear-gradient(180deg,var(--bg),#08170f 45%,#06110b);
+    color:var(--text);
+    line-height:1.65;
+    overflow-x:hidden;
+}
 
-        /* --- IMAGE CARD STYLES --- */
-        .tech-card {
-            width: 180px;         
-            height: 260px;        
-            border-radius: 20px;  
-            overflow: hidden;     
-            flex-shrink: 0; 
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3); 
-        }
+a{
+    color:inherit;
+    text-decoration:none;
+}
 
-        .tech-card img {
-            height: 105%;         
-            width: auto;          
-            max-width: none;      
-            object-fit: cover; 
-            object-position: center; 
-            transition: transform 0.5s ease;
-        }
+.container{
+    width:min(1120px,92%);
+    margin:auto;
+}
 
-        .tech-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            border-color: rgba(56, 189, 248, 0.4);
-            box-shadow: 0 20px 40px var(--accent-glow);
-        }
-        .tech-card:hover img {
-            transform: scale(1.05);
-        }
+nav{
+    position:sticky;
+    top:0;
+    z-index:100;
+    backdrop-filter:blur(14px);
+    background:rgba(7,19,13,.88);
+    border-bottom:1px solid var(--border);
+}
 
-        /* --- PROJECT GRID --- */
-        .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 24px; }
-        .project-card { 
-            background: var(--card-bg); padding: 32px; border-radius: 20px; border: 1px solid var(--card-border);
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
-        }
-        .project-card::before {
-            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px;
-            background: linear-gradient(to right, transparent, var(--accent), transparent);
-            opacity: 0; transition: opacity 0.4s ease;
-        }
-        .project-card:hover { 
-            transform: translateY(-6px); 
-            border-color: rgba(56, 189, 248, 0.3); 
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px var(--accent-glow); 
-        }
-        .project-card:hover::before { opacity: 1; }
-        .project-card h3 { color: var(--text-main); margin-bottom: 12px; font-size: 1.25rem; font-weight: 600; }
-        .project-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; }
+.nav-inner{
+    height:70px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
 
-        /* --- AI CHAT DEMO STYLES --- */
-        .demo-wrapper {
-            display: flex;
-            justify-content: center;
-            margin-top: 25px;
-        }
+.logo{
+    font-size:1.15rem;
+    font-weight:800;
+}
 
-        .chat-container {
-            width: 100%;
-            max-width: 650px;
-            background: var(--card-bg);
-            border-radius: 24px;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-            display: flex;
-            flex-direction: column;
-            height: 500px;
-            overflow: hidden;
-        }
+.logo span{
+    color:var(--green);
+}
 
-        .chat-header {
-            padding: 18px 24px;
-            border-bottom: 1px solid var(--card-border);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: rgba(18, 18, 22, 0.8);
-            backdrop-filter: blur(10px);
-        }
+.nav-links{
+    display:flex;
+    gap:22px;
+    font-size:.9rem;
+    color:var(--muted);
+}
 
-        .chat-header-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 600;
-            font-size: 1rem;
-            color: var(--text-main);
-        }
+.nav-links a:hover{
+    color:var(--green);
+}
 
-        .status-dot {
-            width: 8px;
-            height: 8px;
-            background-color: #22c55e;
-            border-radius: 50%;
-            box-shadow: 0 0 10px #22c55e;
-        }
+.hero{
+    padding:105px 0 80px;
+}
 
-        .chat-box {
-            flex: 1;
-            padding: 24px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            scroll-behavior: smooth;
-        }
+.hero-grid{
+    display:grid;
+    grid-template-columns:1.35fr .85fr;
+    gap:55px;
+    align-items:center;
+}
 
-        .message {
-            max-width: 80%;
-            padding: 14px 18px;
-            border-radius: 16px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            animation: messageFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+.badge{
+    display:inline-block;
+    padding:7px 12px;
+    border:1px solid var(--border);
+    border-radius:999px;
+    color:var(--green);
+    background:rgba(74,222,128,.07);
+    font-size:.82rem;
+    font-weight:800;
+    margin-bottom:20px;
+}
 
-        @keyframes messageFade {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+h1{
+    font-size:clamp(2.8rem,6vw,5rem);
+    line-height:1.03;
+    letter-spacing:-2px;
+}
 
-        .bot-msg {
-            background: #1a1a22;
-            color: var(--text-main);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-            border: 1px solid var(--card-border);
-        }
+h1 span{
+    color:var(--green);
+}
 
-        .user-msg {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-hover) 100%);
-            color: #050507;
-            font-weight: 500;
-            align-self: flex-end;
-            border-bottom-right-radius: 4px;
-            box-shadow: 0 4px 15px var(--accent-glow);
-        }
+.hero p{
+    font-size:1.12rem;
+    color:var(--muted);
+    max-width:720px;
+    margin:25px 0 30px;
+}
 
-        .chat-input-area {
-            padding: 20px 24px;
-            border-top: 1px solid var(--card-border);
-            display: flex;
-            gap: 12px;
-            background: rgba(18, 18, 22, 0.8);
-            backdrop-filter: blur(10px);
-        }
+.actions{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+}
 
-        .chat-input-area input {
-            flex: 1;
-            padding: 14px 18px;
-            border-radius: 14px;
-            border: 1px solid var(--card-border);
-            background: #09090b;
-            color: var(--text-main);
-            outline: none;
-            font-size: 0.95rem;
-            transition: all 0.3s ease;
-        }
+.btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:12px 20px;
+    border-radius:10px;
+    font-weight:750;
+    border:1px solid var(--green);
+    transition:.2s;
+}
 
-        .chat-input-area input:focus { 
-            border-color: var(--accent); 
-            box-shadow: 0 0 0 3px var(--accent-glow);
-        }
+.btn.primary{
+    background:var(--green);
+    color:#06200f;
+}
 
-        .chat-input-area button {
-            padding: 0 24px;
-            background: var(--text-main);
-            color: #050507;
-            border: none;
-            border-radius: 14px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+.btn.primary:hover{
+    background:#86efac;
+    transform:translateY(-2px);
+}
 
-        .chat-input-area button:hover {
-            background: var(--accent);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 20px var(--accent-glow);
-        }
+.btn.secondary{
+    background:transparent;
+    color:var(--text);
+}
 
-        /* --- FOOTER --- */
-        footer { text-align: center; margin-top: 100px; padding-top: 40px; border-top: 1px solid var(--card-border); color: var(--text-muted); font-size: 0.95rem; }
-        a { color: var(--accent); text-decoration: none; font-weight: 500; transition: color 0.2s; }
-        a:hover { color: var(--text-main); text-decoration: underline; }
+.btn.secondary:hover{
+    background:rgba(74,222,128,.1);
+    transform:translateY(-2px);
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+.hero-card{
+    background:linear-gradient(145deg,var(--card2),var(--card));
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:28px;
+    box-shadow:var(--shadow);
+}
+
+.hero-card h3{
+    margin-bottom:18px;
+}
+
+.hero-card ul{
+    list-style:none;
+}
+
+.hero-card li{
+    padding:10px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    color:var(--muted);
+}
+
+.hero-card li:last-child{
+    border:0;
+}
+
+.hero-card strong{
+    color:var(--text);
+}
+
+section{
+    padding:82px 0;
+}
+
+.section-head{
+    max-width:760px;
+    margin-bottom:35px;
+}
+
+.eyebrow{
+    color:var(--green);
+    font-weight:800;
+    font-size:.82rem;
+    text-transform:uppercase;
+    letter-spacing:1.5px;
+}
+
+h2{
+    font-size:2.25rem;
+    line-height:1.15;
+    margin:9px 0 13px;
+}
+
+.section-head p{
+    color:var(--muted);
+}
+
+.grid{
+    display:grid;
+    gap:18px;
+}
+
+/* TECHNOLOGY IMAGE CAROUSEL */
+
+.image-carousel{
+    width:100%;
+    overflow:hidden;
+    position:relative;
+    padding:15px 0 35px;
+}
+
+.image-carousel::before,
+.image-carousel::after{
+    content:"";
+    position:absolute;
+    top:0;
+    width:110px;
+    height:100%;
+    z-index:2;
+    pointer-events:none;
+}
+
+.image-carousel::before{
+    left:0;
+    background:linear-gradient(to right,var(--bg),transparent);
+}
+
+.image-carousel::after{
+    right:0;
+    background:linear-gradient(to left,var(--bg),transparent);
+}
+
+.image-track{
+    display:flex;
+    gap:22px;
+    width:max-content;
+    animation:imageScroll 35s linear infinite;
+}
+
+.image-track:hover{
+    animation-play-state:paused;
+}
+
+.image-tech-card{
+    width:180px;
+    height:260px;
+    border-radius:20px;
+    overflow:hidden;
+    flex-shrink:0;
+    background:var(--card);
+    border:1px solid var(--border);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition:.4s;
+    box-shadow:0 4px 20px rgba(0,0,0,.3);
+}
+
+.image-tech-card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.image-tech-card:hover{
+    transform:translateY(-8px) scale(1.02);
+    border-color:rgba(74,222,128,.5);
+    box-shadow:0 20px 40px rgba(74,222,128,.12);
+}
+
+.image-tech-card:hover img{
+    transform:scale(1.05);
+}
+
+@keyframes imageScroll{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(calc(-50% - 11px));
+    }
+}
+
+/* BUSINESS SERVICES */
+
+.services{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.card{
+    background:linear-gradient(145deg,var(--card2),var(--card));
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:25px;
+    transition:.22s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(74,222,128,.42);
+}
+
+.icon{
+    font-size:1.8rem;
+    margin-bottom:12px;
+}
+
+.card h3{
+    margin-bottom:8px;
+}
+
+.card p{
+    color:var(--muted);
+    font-size:.95rem;
+}
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+}
+
+.tag{
+    padding:5px 9px;
+    border-radius:7px;
+    background:rgba(74,222,128,.08);
+    border:1px solid rgba(74,222,128,.14);
+    color:#c8fbd5;
+    font-size:.78rem;
+}
+
+/* PROJECTS */
+
+.projects{
+    grid-template-columns:repeat(2,1fr);
+}
+
+.project{
+    min-height:250px;
+    display:flex;
+    flex-direction:column;
+}
+
+.project-type{
+    color:var(--green);
+    font-size:.78rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.project h3{
+    font-size:1.3rem;
+    margin:8px 0;
+}
+
+.project p{
+    flex:1;
+}
+
+.stack{
+    margin-top:18px;
+}
+
+/* SKILLS */
+
+.tech-grid{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.tech{
+    text-align:center;
+    padding:20px 12px;
+    border:1px solid var(--border);
+    border-radius:12px;
+    background:rgba(255,255,255,.025);
+    font-weight:750;
+}
+
+.tech small{
+    display:block;
+    color:var(--muted);
+    font-weight:400;
+    margin-top:4px;
+}
+
+/* WORKFLOW */
+
+.workflow{
+    grid-template-columns:repeat(4,1fr);
+}
+
+.step-number{
+    color:var(--green);
+    font-size:.8rem;
+    font-weight:900;
+}
+
+.step h3{
+    margin:6px 0;
+}
+
+.step p{
+    color:var(--muted);
+    font-size:.92rem;
+}
+
+/* CTA */
+
+.cta{
+    background:linear-gradient(135deg,#10351e,#0b2215);
+    border:1px solid var(--border);
+    border-radius:22px;
+    padding:48px;
+    text-align:center;
+}
+
+.cta p{
+    color:var(--muted);
+    max-width:700px;
+    margin:12px auto 25px;
+}
+
+/* FOOTER */
+
+footer{
+    padding:35px 0;
+    border-top:1px solid var(--border);
+    color:var(--muted);
+    font-size:.9rem;
+}
+
+.footer-inner{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    align-items:center;
+}
+
+footer a{
+    color:var(--green);
+}
+
+/* ASSISTANT */
+
+.assistant{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    width:min(360px,calc(100% - 30px));
+    background:#0a1b11;
+    border:1px solid var(--border);
+    border-radius:17px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    z-index:200;
+    display:none;
+}
+
+.assistant.open{
+    display:block;
+}
+
+.assistant-head{
+    padding:14px 16px;
+    background:#10321c;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-weight:800;
+}
+
+.assistant-head button{
+    background:none;
+    border:0;
+    color:white;
+    font-size:1.2rem;
+    cursor:pointer;
+}
+
+.chat{
+    height:250px;
+    overflow:auto;
+    padding:15px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.msg{
+    max-width:88%;
+    padding:9px 11px;
+    border-radius:10px;
+    font-size:.88rem;
+}
+
+.bot{
+    background:#12291b;
+    align-self:flex-start;
+    color:#d9fbe3;
+}
+
+.user{
+    background:#1b6b37;
+    align-self:flex-end;
+}
+
+.chat-input{
+    display:flex;
+    border-top:1px solid var(--border);
+}
+
+.chat-input input{
+    flex:1;
+    background:transparent;
+    border:0;
+    outline:0;
+    padding:13px;
+    color:white;
+}
+
+.chat-input button{
+    border:0;
+    background:var(--green);
+    padding:0 16px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+.assistant-launch{
+    position:fixed;
+    right:22px;
+    bottom:22px;
+    z-index:199;
+    border:1px solid var(--green);
+    background:#0d2a17;
+    color:var(--green);
+    border-radius:999px;
+    padding:12px 17px;
+    font-weight:800;
+    cursor:pointer;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:850px){
+
+    .hero-grid,
+    .services,
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .tech-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .workflow{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .nav-links{
+        display:none;
+    }
+}
+
+@media(max-width:520px){
+
+    .hero{
+        padding:75px 0 60px;
+    }
+
+    section{
+        padding:60px 0;
+    }
+
+    .workflow{
+        grid-template-columns:1fr;
+    }
+
+    .tech-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .image-tech-card{
+        width:140px;
+        height:205px;
+    }
+
+    h2{
+        font-size:1.9rem;
+    }
+
+    .cta{
+        padding:32px 20px;
+    }
+
+    .footer-inner{
+        flex-direction:column;
+        text-align:center;
+    }
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <header>
-            <h1>Jaredh Dagdag</h1>
-            <p>AI Automation &middot; Software Development &middot; Multimedia Creator</p>
-        </header>
 
-        <section>
-            <h2 class="section-title">Core Tech Stack</h2>
-            <div class="carousel-container">
-                <div class="carousel-track">
-                    <div class="tech-card"><img src="html.jpg" alt="HTML5"></div>
-                    <div class="tech-card"><img src="css.jpg" alt="CSS3"></div>
-                    <div class="tech-card"><img src="javascript.jpg" alt="JavaScript"></div>
-                    <div class="tech-card"><img src="bootstrap.jpg" alt="Bootstrap"></div>
-                    <div class="tech-card"><img src="php.jpg" alt="PHP"></div>
-                    <div class="tech-card"><img src="python.jpg" alt="Python"></div>
-                    
-                    <div class="tech-card"><img src="html.jpg" alt="HTML5"></div>
-                    <div class="tech-card"><img src="css.jpg" alt="CSS3"></div>
-                    <div class="tech-card"><img src="javascript.jpg" alt="JavaScript"></div>
-                    <div class="tech-card"><img src="bootstrap.jpg" alt="Bootstrap"></div>
-                    <div class="tech-card"><img src="php.jpg" alt="PHP"></div>
-                    <div class="tech-card"><img src="python.jpg" alt="Python"></div>
-                </div>
-            </div>
-        </section>
+<!-- NAVIGATION -->
 
-        <section>
-            <h2 class="section-title">Selected Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>Google Flow AI Automation</h3>
-                    <p>Leveraged Google Flow's AI-assisted storyboarding and Veo 3.1 to generate customized scripts, visual assets, and precisely timed 8-second short reels without over-dramatizing the content. Maintained absolute character consistency across scenes using pre-built automated workflows.</p>
-                </div>
-                <div class="project-card">
-                    <h3>Local Business Integrations</h3>
-                    <p>Configured, designed, and deployed web hosting environments on InfinityFree. Built functional digital storefronts to bring local enterprises online.</p>
-                </div>
-                <div class="project-card">
-                    <h3>System Architecture</h3>
-                    <p>Applied backend frameworks and integration principles to bridge distinct software environments, ensuring smooth data flow and responsive web design.</p>
-                </div>
-            </div>
-        </section>
+<nav>
+<div class="container nav-inner">
 
-        <section>
-            <h2 class="section-title">Interactive Portfolio Assistant</h2>
-            <p style="color: var(--text-muted); text-align: center; margin-bottom: 25px; font-weight: 300;">Ask me anything about my background, education, tech stack, or projects!</p>
-            
-            <div class="demo-wrapper">
-                <div class="chat-container">
-                    <div class="chat-header">
-                        <div class="chat-header-info">
-                            <span class="status-dot"></span>
-                            Jaredh's Virtual Assistant
-                        </div>
-                    </div>
-                    <div class="chat-box" id="chat-box">
-                        <div class="message bot-msg">
-                            Hey there! Feel free to drop a question about my projects, coding experience, or what I like to do for fun.
-                        </div>
-                    </div>
-                    <div class="chat-input-area">
-                        <input type="text" id="user-input" placeholder="Ask a question..." onkeypress="handleKeyPress(event)">
-                        <button onclick="sendMessage()">Send</button>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <a class="logo" href="#">Jaredh<span>.</span></a>
 
-        <footer>
-            <p>Let's build something extraordinary. Connect with me on <a href="https://github.com/Jaredh-Coding-20" target="_blank">GitHub</a>.</p>
-        </footer>
+    <div class="nav-links">
+        <a href="#technology">Tech</a>
+        <a href="#business">Business</a>
+        <a href="#services">Services</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
     </div>
 
-    <script>
-        function generateResponse(input) {
-            const text = input.toLowerCase();
-            const matchesAny = (words) => words.some(word => text.includes(word));
+</div>
+</nav>
 
-            if (matchesAny(["who", "name", "jaredh", "dagdag", "person", "creator", "author", "owner", "yourself", "background", "profile", "bio"])) {
-                return "I am Jaredh Carlito Egmalis Dagdag, a 22-year-old developer, multimedia creator, and IT student based in the Philippines.";
-            }
-            if (matchesAny(["school", "university", "study", "degree", "college", "education", "course", "uep", "pangasinan", "orangeapps", "lms", "student", "class", "academic"])) {
-                return "I study Information Technology at the University of Eastern Pangasinan (UEP), building systems using frameworks like Laravel and managing platforms like OrangeApps LMS.";
-            }
-            if (matchesAny(["skill", "tech", "stack", "language", "programming", "code", "coding", "development", "developer", "html", "css", "javascript", "bootstrap", "php", "python", "laravel", "tools", "hugging", "face", "google", "flow", "veo"])) {
-                return "My stack includes HTML, CSS, JavaScript, Bootstrap, PHP, Python, and Laravel, alongside AI tools like Hugging Face, Google Flow, and Veo 3.1.";
-            }
-            if (matchesAny(["work", "job", "bpo", "career", "customer", "service", "hiring", "hire", "employ", "concentrix", "vxi", "sutherland", "resume", "cv", "interview", "application"])) {
-                return "I deploy web environments on InfinityFree and actively target Customer Service roles in the BPO sector, engaging with companies like Concentrix, VXI, and Sutherland.";
-            }
-            if (matchesAny(["game", "gaming", "hobby", "hobbies", "play", "toram", "codm", "mobile", "legends", "meme", "culture", "fun", "crystal", "crysta", "demonic", "quasar", "gryps"])) {
-                return "I enjoy mobile gaming (Call of Duty: Mobile, Mobile Legends, Toram Online) and Filipino meme culture. Fun fact: demonic quasar is not a weapon crystal, and gryps crysta doesn't exist!";
-            }
-            if (matchesAny(["project", "video", "reel", "short", "script", "animation", "vlog", "edit", "multimedia", "infinityfree", "hosting", "website", "shop"])) {
-                return "I built an exactly 8-second non-dramatic video short using Google Flow and Veo 3.1, maintaining scene consistency and precise timing, alongside local business sites deployed on InfinityFree.";
-            }
-            if (matchesAny(["hello", "hi", "hey", "greetings", "sup", "morning", "afternoon", "evening", "start", "begin"])) {
-                return "Hello! Feel free to ask me about my background, tech stack, education, or projects.";
-            }
-            if (matchesAny(["how are you", "doing", "status", "system", "operational"])) {
-                return "All systems optimal! Ready to answer any questions about my portfolio.";
-            }
 
-            return "That's an interesting question! Try asking about my university studies, my programming stack, my BPO job search, or my mobile gaming hobbies.";
-        }
+<!-- HERO -->
 
-        function sendMessage() {
-            const inputField = document.getElementById("user-input");
-            const chatBox = document.getElementById("chat-box");
-            const messageText = inputField.value.trim();
+<header class="hero">
 
-            if (messageText === "") return;
+<div class="container hero-grid">
 
-            const userDiv = document.createElement("div");
-            userDiv.className = "message user-msg";
-            userDiv.textContent = messageText;
-            chatBox.appendChild(userDiv);
+    <div>
 
-            inputField.value = "";
-            chatBox.scrollTop = chatBox.scrollHeight;
+        <div class="badge">
+            CUSTOM SOFTWARE • BUSINESS WEBSITES • AI AUTOMATION
+        </div>
 
-            setTimeout(() => {
-                const botDiv = document.createElement("div");
-                botDiv.className = "message bot-msg";
-                botDiv.textContent = generateResponse(messageText);
-                chatBox.appendChild(botDiv);
-                chatBox.scrollTop = chatBox.scrollHeight;
-            }, 400);
-        }
+        <h1>
+            I Build <span>Websites & Software</span> Around Your Business.
+        </h1>
 
-        function handleKeyPress(event) {
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        }
-    </script>
+        <p>
+            I build websites and custom digital systems for small businesses,
+            including ordering systems, business websites, Laravel platforms,
+            Python and JavaScript projects, React applications, web games,
+            and AI-powered automation tailored to what you actually need.
+        </p>
+
+        <div class="actions">
+
+            <a class="btn primary" href="#contact">
+                Start a Project
+            </a>
+
+            <a class="btn secondary" href="#projects">
+                View My Work
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="hero-card">
+
+        <h3>What I Can Build</h3>
+
+        <ul>
+
+            <li>
+                ✓ <strong>Small Business Websites</strong>
+            </li>
+
+            <li>
+                ✓ <strong>Online Ordering Systems</strong>
+            </li>
+
+            <li>
+                ✓ <strong>Custom Web Applications</strong>
+            </li>
+
+            <li>
+                ✓ <strong>Laravel & PHP Systems</strong>
+            </li>
+
+            <li>
+                ✓ <strong>Python & JavaScript Projects</strong>
+            </li>
+
+            <li>
+                ✓ <strong>React Applications</strong>
+            </li>
+
+            <li>
+                ✓ <strong>Web Games</strong>
+            </li>
+
+            <li>
+                ✓ <strong>AI Automation</strong>
+            </li>
+
+        </ul>
+
+    </div>
+
+</div>
+
+</header>
+
+
+<!-- ORIGINAL TECHNOLOGY IMAGES -->
+
+<section id="technology">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            Technology Stack
+        </div>
+
+        <h2>
+            Technologies I work with.
+        </h2>
+
+        <p>
+            These are the original technology images from my previous portfolio.
+            Keep the image files in the same GitHub folder as this index.html.
+        </p>
+
+    </div>
+
+
+    <div class="image-carousel">
+
+        <div class="image-track">
+
+            <div class="image-tech-card">
+                <img src="html.jpg" alt="HTML">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="css.jpg" alt="CSS">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="javascript.jpg" alt="JavaScript">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="bootstrap.jpg" alt="Bootstrap">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="php.jpg" alt="PHP">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="python.jpg" alt="Python">
+            </div>
+
+
+            <!-- DUPLICATES FOR INFINITE SCROLL -->
+
+            <div class="image-tech-card">
+                <img src="html.jpg" alt="HTML">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="css.jpg" alt="CSS">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="javascript.jpg" alt="JavaScript">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="bootstrap.jpg" alt="Bootstrap">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="php.jpg" alt="PHP">
+            </div>
+
+            <div class="image-tech-card">
+                <img src="python.jpg" alt="Python">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SMALL BUSINESS -->
+
+<section id="business">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            For Small Businesses
+        </div>
+
+        <h2>
+            Turn your business into an easy-to-order online experience.
+        </h2>
+
+        <p>
+            I can build a custom website around your products, services,
+            and ordering process. The goal is simple: make it easier for
+            customers to discover what you offer and place an order.
+        </p>
+
+    </div>
+
+
+    <div class="grid services">
+
+        <article class="card">
+
+            <div class="icon">🏪</div>
+
+            <h3>
+                Business Websites
+            </h3>
+
+            <p>
+                Professional mobile-friendly websites for local businesses,
+                shops, restaurants, service providers, and startups.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Responsive</span>
+                <span class="tag">Custom Design</span>
+                <span class="tag">Business Info</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">🛒</div>
+
+            <h3>
+                Online Ordering Systems
+            </h3>
+
+            <p>
+                Custom product menus, order forms, carts, customer details,
+                and ordering flows designed around your business process.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Products</span>
+                <span class="tag">Cart</span>
+                <span class="tag">Orders</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">📊</div>
+
+            <h3>
+                Business Management
+            </h3>
+
+            <p>
+                Admin dashboards and database-driven systems for managing
+                products, orders, customers, and business information.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Dashboard</span>
+                <span class="tag">Database</span>
+                <span class="tag">Admin Panel</span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+
+    <div class="card" style="margin-top:18px">
+
+        <h3>
+            Example: Restaurant Ordering System
+        </h3>
+
+        <p style="margin-top:8px">
+
+            A restaurant could have a website with a menu, product categories,
+            customer ordering, cart functionality, customer details,
+            order information, and an admin area for managing products
+            and incoming orders.
+
+            The same approach can be customized for shops, bakeries,
+            clothing businesses, salons, and other local businesses.
+
+        </p>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SERVICES -->
+
+<section id="services">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            Services
+        </div>
+
+        <h2>
+            Solutions built around your requirements.
+        </h2>
+
+        <p>
+            Whether you have a complete specification or only an idea,
+            I can turn it into a functional digital solution.
+        </p>
+
+    </div>
+
+
+    <div class="grid services">
+
+
+        <article class="card">
+
+            <div class="icon">💻</div>
+
+            <h3>
+                Custom Web Applications
+            </h3>
+
+            <p>
+                Interactive and database-driven websites, dashboards,
+                portals, tools, and client-specific web applications.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">JavaScript</span>
+                <span class="tag">React</span>
+                <span class="tag">PHP</span>
+                <span class="tag">HTML/CSS</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">⚙️</div>
+
+            <h3>
+                Laravel & Backend Systems
+            </h3>
+
+            <p>
+                Business systems with authentication, roles, admin panels,
+                databases, CRUD functionality, dashboards, and APIs.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Laravel</span>
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">REST APIs</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">🐍</div>
+
+            <h3>
+                Python Development
+            </h3>
+
+            <p>
+                Automation scripts, utilities, data-processing projects,
+                API integrations, and custom Python solutions.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">Python</span>
+                <span class="tag">Automation</span>
+                <span class="tag">APIs</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">⚛️</div>
+
+            <h3>
+                JavaScript & React
+            </h3>
+
+            <p>
+                Interactive websites, dashboards, browser applications,
+                dynamic interfaces, and custom React applications.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">JavaScript</span>
+                <span class="tag">React</span>
+                <span class="tag">Frontend</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">🎮</div>
+
+            <h3>
+                Web Game Development
+            </h3>
+
+            <p>
+                Browser-based games and interactive experiences with custom
+                mechanics, progression, educational features, and controls.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML5</span>
+                <span class="tag">Game Logic</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">🤖</div>
+
+            <h3>
+                AI Automation
+            </h3>
+
+            <p>
+                AI-assisted workflows, API integrations, content pipelines,
+                assistants, and repetitive-task automation.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">AI APIs</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Workflows</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card">
+
+            <div class="icon">🧩</div>
+
+            <h3>
+                Custom Software
+            </h3>
+
+            <p>
+                Client-specific software built around the required workflow,
+                features, users, and business goals.
+            </p>
+
+            <div class="tags">
+
+                <span class="tag">C</span>
+                <span class="tag">C++</span>
+                <span class="tag">C#</span>
+                <span class="tag">Java</span>
+                <span class="tag">VB.NET</span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- PROJECTS -->
+
+<section id="projects">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            Selected Work
+        </div>
+
+        <h2>
+            Projects that show what I can build.
+        </h2>
+
+        <p>
+            My projects cover software systems, educational applications,
+            games, automation, and practical web development.
+        </p>
+
+    </div>
+
+
+    <div class="grid projects">
+
+
+        <article class="card project">
+
+            <div class="project-type">
+                Web Game / Educational Software
+            </div>
+
+            <h3>
+                Statforge — Educational RPG
+            </h3>
+
+            <p>
+                A browser-based educational RPG with character selection,
+                gameplay levels, progression, educational content, points,
+                cosmetics, responsive controls, and interactive game mechanics.
+            </p>
+
+            <div class="tags stack">
+
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Game Systems</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card project">
+
+            <div class="project-type">
+                Laravel / Database System
+            </div>
+
+            <h3>
+                University Portal
+            </h3>
+
+            <p>
+                A Laravel-based university portal featuring authentication,
+                student records, user roles, admin functionality,
+                database integration, dashboards, and student management.
+            </p>
+
+            <div class="tags stack">
+
+                <span class="tag">Laravel</span>
+                <span class="tag">PHP</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Authentication</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card project">
+
+            <div class="project-type">
+                AI Automation
+            </div>
+
+            <h3>
+                AI Content Automation Workflow
+            </h3>
+
+            <p>
+                AI-assisted content workflows combining structured scripts,
+                visual generation, storyboarding, and automated production
+                processes for short-form content.
+            </p>
+
+            <div class="tags stack">
+
+                <span class="tag">AI Tools</span>
+                <span class="tag">Automation</span>
+                <span class="tag">Content Workflow</span>
+
+            </div>
+
+        </article>
+
+
+        <article class="card project">
+
+            <div class="project-type">
+                Web Development
+            </div>
+
+            <h3>
+                Local Business Web Solutions
+            </h3>
+
+            <p>
+                Custom websites and digital solutions for local businesses,
+                including hosting configuration, storefront concepts,
+                interactive pages, and business-specific functionality.
+            </p>
+
+            <div class="tags stack">
+
+                <span class="tag">JavaScript</span>
+                <span class="tag">PHP</span>
+                <span class="tag">Bootstrap</span>
+                <span class="tag">GitHub</span>
+
+            </div>
+
+        </article>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- SKILLS -->
+
+<section id="skills">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            Programming
+        </div>
+
+        <h2>
+            A broad programming toolkit.
+        </h2>
+
+        <p>
+            I can work across different technologies depending on the
+            requirements of the application or project.
+        </p>
+
+    </div>
+
+
+    <div class="grid tech-grid">
+
+
+        <div class="tech">
+            JavaScript
+            <small>Web & interactive applications</small>
+        </div>
+
+
+        <div class="tech">
+            React
+            <small>Modern web interfaces</small>
+        </div>
+
+
+        <div class="tech">
+            Python
+            <small>Automation & applications</small>
+        </div>
+
+
+        <div class="tech">
+            PHP / Laravel
+            <small>Backend systems</small>
+        </div>
+
+
+        <div class="tech">
+            C#
+            <small>Application development</small>
+        </div>
+
+
+        <div class="tech">
+            C++
+            <small>Programming & software projects</small>
+        </div>
+
+
+        <div class="tech">
+            C / Java / Kotlin
+            <small>Programming & applications</small>
+        </div>
+
+
+        <div class="tech">
+            VB.NET
+            <small>Application development</small>
+        </div>
+
+
+        <div class="tech">
+            HTML / CSS
+            <small>Web development</small>
+        </div>
+
+
+        <div class="tech">
+            Bootstrap
+            <small>Responsive interfaces</small>
+        </div>
+
+
+        <div class="tech">
+            MySQL
+            <small>Database-driven systems</small>
+        </div>
+
+
+        <div class="tech">
+            Git / GitHub
+            <small>Version control & deployment</small>
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- WORKFLOW -->
+
+<section id="process">
+
+<div class="container">
+
+    <div class="section-head">
+
+        <div class="eyebrow">
+            How I Work
+        </div>
+
+        <h2>
+            From idea to working software.
+        </h2>
+
+    </div>
+
+
+    <div class="grid workflow">
+
+
+        <div class="card">
+
+            <div class="step-number">
+                01
+            </div>
+
+            <h3>
+                Understand
+            </h3>
+
+            <p>
+                I learn what you need the software to do,
+                who will use it, and what the final result should accomplish.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="step-number">
+                02
+            </div>
+
+            <h3>
+                Plan
+            </h3>
+
+            <p>
+                I break the requirements into features, screens,
+                systems, database needs, and technical components.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="step-number">
+                03
+            </div>
+
+            <h3>
+                Build
+            </h3>
+
+            <p>
+                I develop the website, application, game,
+                automation, or backend system using suitable technologies.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="step-number">
+                04
+            </div>
+
+            <h3>
+                Improve
+            </h3>
+
+            <p>
+                I test, debug, refine functionality, and adjust
+                the solution based on feedback and requirements.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- CONTACT -->
+
+<section id="contact">
+
+<div class="container">
+
+    <div class="cta">
+
+        <div class="eyebrow">
+            Let's Build Something
+        </div>
+
+        <h2>
+            Have a business idea or software requirement?
+        </h2>
+
+        <p>
+            Tell me what you want to build. It can be a small-business
+            website, ordering system, web application, Laravel system,
+            Python or JavaScript project, web game, custom software,
+            or AI automation workflow.
+        </p>
+
+        <div class="actions" style="justify-content:center">
+
+            <a
+                class="btn primary"
+                href="https://github.com/Jaredh-Coding-20"
+                target="_blank">
+                View GitHub
+            </a>
+
+            <!-- CHANGE THIS EMAIL -->
+            <a
+                class="btn secondary"
+                href="mailto:your-email@example.com">
+                Contact Me
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+<div class="container footer-inner">
+
+    <div>
+        © 2026 Jaredh Dagdag.
+        Custom Software • Business Websites • AI Automation
+    </div>
+
+    <a
+        href="https://github.com/Jaredh-Coding-20"
+        target="_blank">
+        GitHub ↗
+    </a>
+
+</div>
+
+</footer>
+
+
+<!-- PORTFOLIO ASSISTANT -->
+
+<button
+    class="assistant-launch"
+    id="assistantLaunch">
+
+    Ask My Assistant
+
+</button>
+
+
+<div
+    class="assistant"
+    id="assistant">
+
+    <div class="assistant-head">
+
+        <span>
+            Jaredh's Project Assistant
+        </span>
+
+        <button id="assistantClose">
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="chat"
+        id="chat">
+
+        <div class="msg bot">
+
+            Hi! Ask me about small-business websites,
+            ordering systems, Laravel, Python, JavaScript,
+            React, web games, custom software, or AI automation.
+
+        </div>
+
+    </div>
+
+
+    <form
+        class="chat-input"
+        id="chatForm">
+
+        <input
+            id="chatInput"
+            placeholder="What can Jaredh build?"
+            autocomplete="off">
+
+        <button>
+            Send
+        </button>
+
+    </form>
+
+</div>
+
+
+<script>
+
+const launch =
+    document.getElementById("assistantLaunch");
+
+const assistant =
+    document.getElementById("assistant");
+
+const closeBtn =
+    document.getElementById("assistantClose");
+
+const form =
+    document.getElementById("chatForm");
+
+const input =
+    document.getElementById("chatInput");
+
+const chat =
+    document.getElementById("chat");
+
+
+launch.onclick = () => {
+
+    assistant.classList.add("open");
+
+    launch.style.display = "none";
+
+    input.focus();
+
+};
+
+
+closeBtn.onclick = () => {
+
+    assistant.classList.remove("open");
+
+    launch.style.display = "block";
+
+};
+
+
+function addMessage(text,type){
+
+    const div =
+        document.createElement("div");
+
+    div.className =
+        "msg " + type;
+
+    div.textContent =
+        text;
+
+    chat.appendChild(div);
+
+    chat.scrollTop =
+        chat.scrollHeight;
+
+}
+
+
+function getReply(message){
+
+    const m =
+        message.toLowerCase();
+
+
+    if(
+        m.includes("order") ||
+        m.includes("ordering") ||
+        m.includes("business") ||
+        m.includes("shop") ||
+        m.includes("restaurant")
+    ){
+
+        return "I can build custom small-business websites and ordering systems with product or menu listings, customer orders, cart functionality, order information, admin features, and database integration.";
+
+    }
+
+
+    if(
+        m.includes("website") ||
+        m.includes("web")
+    ){
+
+        return "I can build custom websites and web applications using HTML, CSS, JavaScript, React, PHP, Laravel, Bootstrap, and database technologies.";
+
+    }
+
+
+    if(
+        m.includes("laravel") ||
+        m.includes("php")
+    ){
+
+        return "I can develop Laravel and PHP systems with authentication, user roles, dashboards, CRUD features, databases, admin panels, and custom business functionality.";
+
+    }
+
+
+    if(
+        m.includes("python")
+    ){
+
+        return "I can work on Python applications, automation scripts, utilities, API integrations, data-processing tasks, and custom Python projects.";
+
+    }
+
+
+    if(
+        m.includes("javascript") ||
+        m.includes("react") ||
+        m.includes("js")
+    ){
+
+        return "I can build JavaScript and React applications, interactive websites, dashboards, browser tools, and dynamic web functionality.";
+
+    }
+
+
+    if(
+        m.includes("game") ||
+        m.includes("gaming")
+    ){
+
+        return "I develop web-based games and interactive systems, including educational RPG concepts, custom mechanics, progression systems, controls, and responsive gameplay.";
+
+    }
+
+
+    if(
+        m.includes("ai") ||
+        m.includes("automation")
+    ){
+
+        return "I can create AI-assisted workflows, API integrations, content automation, assistants, and repetitive-task automation.";
+
+    }
+
+
+    if(
+        m.includes("c++") ||
+        m.includes("c#") ||
+        m.includes("vb.net") ||
+        m.includes("java") ||
+        m.includes("kotlin")
+    ){
+
+        return "I can also work with C, C++, C#, Java, Kotlin, and VB.NET for programming and application-oriented projects.";
+
+    }
+
+
+    if(
+        m.includes("price") ||
+        m.includes("cost")
+    ){
+
+        return "Project pricing depends on the scope, features, technology, and timeline. Send the requirements first so the project can be estimated accurately.";
+
+    }
+
+
+    if(
+        m.includes("hire") ||
+        m.includes("contact")
+    ){
+
+        return "You can contact me with your project requirements. Explain what you want built, the main features, and the result you want.";
+
+    }
+
+
+    return "I work on custom software, small-business websites, ordering systems, Laravel systems, Python and JavaScript projects, React applications, web games, and AI automation. Tell me what you need built.";
+
+}
+
+
+form.addEventListener(
+    "submit",
+    function(e){
+
+        e.preventDefault();
+
+        const message =
+            input.value.trim();
+
+        if(!message)
+            return;
+
+
+        addMessage(
+            message,
+            "user"
+        );
+
+
+        input.value = "";
+
+
+        setTimeout(
+            () => {
+
+                addMessage(
+                    getReply(message),
+                    "bot"
+                );
+
+            },
+            250
+        );
+
+    }
+);
+
+</script>
+
 </body>
 </html>
